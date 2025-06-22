@@ -14,6 +14,8 @@
             --primary-light: #4db6a2;
             --secondary-color: #f8b500;
             --accent-color: #ff6b6b;
+            --biogas-color: #2196F3;
+            --biogas-light: #64B5F6;
             --text-dark: #333333;
             --text-light: #f5f5f5;
             --bg-light: #ffffff;
@@ -259,6 +261,15 @@
             box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
         }
 
+        .btn-biogas {
+            background-color: var(--biogas-color);
+        }
+
+        .btn-biogas:hover {
+            background-color: #1976D2;
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.2);
+        }
+
         .btn-outline {
             background-color: transparent;
             border: 1.5px solid var(--primary-color);
@@ -299,6 +310,11 @@
             width: 0;
             transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
             box-shadow: 0 0 8px rgba(0, 134, 110, 0.3);
+        }
+
+        .progress-bar.biogas {
+            background: linear-gradient(to right, var(--biogas-color), var(--biogas-light));
+            box-shadow: 0 0 8px rgba(33, 150, 243, 0.3);
         }
 
         /* Stat Item - Modernized */
@@ -349,6 +365,11 @@
         .badge-idle {
             background-color: #f0f0f0;
             color: #5f5f5f;
+        }
+
+        .badge-biogas {
+            background-color: #e3f2fd;
+            color: #1976D2;
         }
 
         /* Tabs - Modernized */
@@ -761,8 +782,7 @@
         #settings-page, 
         #help-page, 
         #esg-page,
-        #biopellet-page,
-        #community-page {
+        #biogas-page {
             padding-bottom: 70px;
             padding-top: 8px;
         }
@@ -812,7 +832,7 @@
             <div class="header-actions">
                 <div class="notification-icon" onclick="showPage('notification-page')">
                     <i class="fas fa-bell nav-icon"></i>
-                    <span class="notification-badge">2</span>
+                    <span class="notification-badge">3</span>
                 </div>
             </div>
         </header>
@@ -842,8 +862,12 @@
                     <span class="stat-value">1.2 kg</span>
                 </div>
                 <div class="stat-item">
+                    <span class="stat-label">Biogas Generated Today</span>
+                    <span class="stat-value">0.36 m³</span>
+                </div>
+                <div class="stat-item">
                     <span class="stat-label">This Week</span>
-                    <span class="stat-value">5.6 kg</span>
+                    <span class="stat-value">5.6 kg waste • 1.68 m³ gas</span>
                 </div>
                 <div class="chart-container" style="height: 120px;">
                     <canvas id="home-chart"></canvas>
@@ -859,14 +883,14 @@
                     <div class="notification-item" onclick="showToast('Filter cleaning reminder!')">
                         <div class="notification-icon-container"><i class="fas fa-exclamation-triangle"></i></div>
                         <div class="notification-content">
-                            <div class="notification-title">Filter cleaning in 2 days</div>
+                            <div class="notification-title">Biogas chamber maintenance in 2 days</div>
                             <div class="notification-time">15 minutes ago</div>
                         </div>
                     </div>
                     <div class="notification-item" onclick="showToast('Process completed!')">
                         <div class="notification-icon-container"><i class="fas fa-check-circle"></i></div>
                         <div class="notification-content">
-                            <div class="notification-title">Last process completed</div>
+                            <div class="notification-title">Biogas production completed</div>
                             <div class="notification-time">2 hours ago</div>
                         </div>
                     </div>
@@ -895,13 +919,13 @@
 
             <div class="card">
                 <div class="card-title">
-                    <span>Process Details</span>
-                    <span class="card-title-icon"><i class="fas fa-cogs"></i></span>
+                    <span>Biogas Production Details</span>
+                    <span class="card-title-icon"><i class="fas fa-flask"></i></span>
                 </div>
                 <div class="process-info">
                     <div class="process-step">
                         <div class="step-title">Stage</div>
-                        <div class="step-value">Drying</div>
+                        <div class="step-value">Anaerobic Digestion</div>
                     </div>
                     <div class="process-step">
                         <div class="step-title">Elapsed Time</div>
@@ -909,11 +933,19 @@
                     </div>
                     <div class="process-step">
                         <div class="step-title">Temperature</div>
-                        <div class="step-value">110°C</div>
+                        <div class="step-value">38°C</div>
                     </div>
                     <div class="process-step">
-                        <div class="step-title">Humidity Level</div>
-                        <div class="step-value">15%</div>
+                        <div class="step-title">pH Level</div>
+                        <div class="step-value">7.2</div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-title">Gas Pressure</div>
+                        <div class="step-value">1.2 bar</div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-title">Methane Content</div>
+                        <div class="step-value">62%</div>
                     </div>
                 </div>
                 <div class="chart-container" style="margin-top: 16px;">
@@ -934,6 +966,10 @@
                     <span class="stat-label">Estimated Completion</span>
                     <span class="stat-value">11:15 AM</span>
                 </div>
+                <div class="stat-item">
+                    <span class="stat-label">Expected Gas Output</span>
+                    <span class="stat-value">0.36 m³</span>
+                </div>
                 <button class="btn btn-accent btn-full" onclick="showToast('Process stopped!')">Stop Process</button>
             </div>
         </div>
@@ -947,7 +983,7 @@
 
             <div class="card">
                 <div class="card-title">
-                    <span>Processed Waste History</span>
+                    <span>Biogas Production History</span>
                     <span class="card-title-icon"><i class="fas fa-chart-line"></i></span>
                 </div>
                 <div class="chart-tabs">
@@ -959,12 +995,12 @@
                     <canvas id="history-chart"></canvas>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">Total This Month</span>
-                    <span class="stat-value">24.5 kg</span>
+                    <span class="stat-label">Total Gas This Month</span>
+                    <span class="stat-value">7.35 m³</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">Daily Average</span>
-                    <span class="stat-value">0.8 kg</span>
+                    <span class="stat-value">0.24 m³</span>
                 </div>
             </div>
 
@@ -978,7 +1014,8 @@
                         <tr>
                             <th>Date</th>
                             <th>Duration</th>
-                            <th>Weight</th>
+                            <th>Waste</th>
+                            <th>Gas Output</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -987,18 +1024,21 @@
                             <td>10/15/2023</td>
                             <td>60 min</td>
                             <td>1.2 kg</td>
+                            <td>0.36 m³</td>
                             <td><span class="badge badge-completed"><i class="fa-solid fa-check"></i></span></td>
                         </tr>
                         <tr>
                             <td>10/14/2023</td>
                             <td>55 min</td>
                             <td>0.9 kg</td>
+                            <td>0.27 m³</td>
                             <td><span class="badge badge-completed"><i class="fa-solid fa-check"></i></span></td>
                         </tr>
                         <tr>
                             <td>10/13/2023</td>
                             <td>58 min</td>
                             <td>1.1 kg</td>
+                            <td>0.33 m³</td>
                             <td><span class="badge badge-completed"><i class="fa-solid fa-check"></i></span></td>
                         </tr>
                     </tbody>
@@ -1023,28 +1063,35 @@
                     <div class="notification-item" onclick="showToast('Maintenance reminder!')">
                         <div class="notification-icon-container"><i class="fas fa-exclamation-triangle"></i></div>
                         <div class="notification-content">
-                            <div class="notification-title">Maintenance: Filter cleaning in 2 days</div>
+                            <div class="notification-title">Maintenance: Biogas chamber cleaning in 2 days</div>
                             <div class="notification-time">15 minutes ago</div>
                         </div>
                     </div>
                     <div class="notification-item" onclick="showToast('Process completed!')">
                         <div class="notification-icon-container"><i class="fas fa-check-circle"></i></div>
                         <div class="notification-content">
-                            <div class="notification-title">Process Completed: Batch #123 finished at 11:15 AM</div>
+                            <div class="notification-title">Biogas Production Completed: 0.36 m³ generated at 11:15 AM</div>
                             <div class="notification-time">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="notification-item" onclick="showToast('Gas quality alert!')">
+                        <div class="notification-icon-container" style="background-color: var(--biogas-color);"><i class="fas fa-flask"></i></div>
+                        <div class="notification-content">
+                            <div class="notification-title">High methane content detected: 68% purity</div>
+                            <div class="notification-time">4 hours ago</div>
                         </div>
                     </div>
                     <div class="notification-item" onclick="showToast('Error detected!')">
                         <div class="notification-icon-container"><i class="fas fa-exclamation-circle"></i></div>
                         <div class="notification-content">
-                            <div class="notification-title">Error: Sensor malfunction</div>
+                            <div class="notification-title">Error: Pressure sensor malfunction</div>
                             <div class="notification-time">Yesterday, 3:45 PM</div>
                         </div>
                     </div>
                     <div class="notification-item" onclick="showToast('Update available!')">
                         <div class="notification-icon-container"><i class="fas fa-bell"></i></div>
                         <div class="notification-content">
-                            <div class="notification-title">Update: New software available</div>
+                            <div class="notification-title">Update: New biogas optimization available</div>
                             <div class="notification-time">2 days ago</div>
                         </div>
                     </div>
@@ -1056,24 +1103,32 @@
         <div id="settings-page" class="hidden">
             <div class="card">
                 <div class="card-title">
-                    <span>Device Settings</span>
+                    <span>Biogas Production Settings</span>
                     <span class="card-title-icon"><i class="fas fa-cog"></i></span>
                 </div>
                 <div class="settings-form">
                     <div class="form-group">
-                        <label class="form-label">Temperature Range</label>
+                        <label class="form-label">Operating Temperature</label>
                         <select class="form-select">
-                            <option>100-120°C (Standard)</option>
-                            <option>90-110°C (Eco)</option>
-                            <option>110-130°C (Fast)</option>
+                            <option>35-40°C (Mesophilic - Standard)</option>
+                            <option>50-60°C (Thermophilic - Fast)</option>
+                            <option>30-35°C (Psychrophilic - Energy Efficient)</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Process Mode</label>
+                        <label class="form-label">Production Mode</label>
                         <div class="flex gap-8">
                             <button class="btn btn-outline" style="flex: 1;" onclick="showToast('Standard mode selected!')">Standard</button>
-                            <button class="btn" style="flex: 1;" onclick="showToast('Eco mode selected!')">Eco</button>
+                            <button class="btn" style="flex: 1;" onclick="showToast('High-yield mode selected!')">High-Yield</button>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Gas Quality Target</label>
+                        <select class="form-select">
+                            <option>60-65% Methane (Standard)</option>
+                            <option>65-70% Methane (High Quality)</option>
+                            <option>55-60% Methane (Energy Efficient)</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -1091,9 +1146,16 @@
                     </label>
                 </div>
                 <div class="toggle-container">
-                    <span class="toggle-label">Notify on process completion</span>
+                    <span class="toggle-label">Notify on production completion</span>
                     <label class="toggle">
-                        <input type="checkbox" checked onchange="showToast(this.checked ? 'Process completion alerts enabled!' : 'Process completion alerts disabled!')">
+                        <input type="checkbox" checked onchange="showToast(this.checked ? 'Production completion alerts enabled!' : 'Production completion alerts disabled!')">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-container">
+                    <span class="toggle-label">Gas quality alerts</span>
+                    <label class="toggle">
+                        <input type="checkbox" checked onchange="showToast(this.checked ? 'Gas quality alerts enabled!' : 'Gas quality alerts disabled!')">
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
@@ -1117,7 +1179,7 @@
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">Connected Device</span>
-                    <span class="stat-value">ZERODISH #A12345</span>
+                    <span class="stat-value">ZERODISH-BG #A12345</span>
                 </div>
                 <button class="btn btn-full mt-16" onclick="showToast('Settings saved!')">Save Settings</button>
             </div>
@@ -1132,7 +1194,7 @@
                 </div>
                 <div class="mb-16">
                     <h3 style="margin-bottom: 8px;">User Guide</h3>
-                    <p style="color: #777; margin-bottom: 16px;">Access the complete guide for ZERODISH</p>
+                    <p style="color: #777; margin-bottom: 16px;">Access the complete guide for ZERODISH Biogas System</p>
                     <a href="#" class="btn btn-outline btn-full" onclick="showToast('Guide opened!')">Open User Guide</a>
                 </div>
                 <div class="mb-16">
@@ -1155,36 +1217,38 @@
                 <div class="accordion" style="margin-top: 16px;">
                     <div class="accordion-item">
                         <div class="accordion-header" onclick="toggleAccordion(this)">
-                            Device won't turn on
+                            Low biogas production
                             <span class="accordion-icon">+</span>
                         </div>
                         <div class="accordion-content">
-                            <p>Ensure the power cable is properly connected and the outlet is functional. Also, check if the power button on the back of the device is in the "ON" position.</p>
-                            <p>If it still doesn't turn on, contact technical support.</p>
+                            <p>Check the pH level (should be 6.8-7.2) and temperature (35-40°C). Ensure adequate organic matter and proper mixing.</p>
+                            <p>If production remains low, try adjusting the C:N ratio by adding more carbon-rich materials.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <div class="accordion-header" onclick="toggleAccordion(this)">
-                            Process stopped midway
+                            Pressure sensor error
                             <span class="accordion-icon">+</span>
                         </div>
                         <div class="accordion-content">
-                            <p>This can occur if the humidity sensor detects abnormal conditions. Open the device and check for any foreign objects in the chamber.</p>
-                            <p>If the issue persists, try resetting the device by pressing the reset button for 5 seconds.</p>
+                            <p>Reset the device and check the pressure sensor connections. Clean the sensor if needed.</p>
+                            <p>If the error persists, the sensor may need replacement. Contact technical support for assistance.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <div class="accordion-header" onclick="toggleAccordion(this)">
-                            Sensor error
+                            Poor gas quality (low methane)
                             <span class="accordion-icon">+</span>
                         </div>
                         <div class="accordion-content">
-                            <p>Reset the device and check the sensor connections. If the error persists, the sensor may need replacement. Contact technical support for assistance.</p>
+                            <p>This usually indicates incomplete digestion. Check temperature consistency and ensure proper pH levels.</p>
+                            <p>Allow more time for the digestion process and avoid overloading the system with organic matter.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- ESG Page -->
         <div id="esg-page" class="hidden">
             <div class="card">
@@ -1193,12 +1257,16 @@
                     <span class="card-title-icon"><i class="fas fa-leaf"></i></span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">Waste Diverted</span>
+                    <span class="stat-label">Waste Diverted from Landfill</span>
                     <span class="stat-value">150 kg</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">Carbon Reduction</span>
-                    <span class="stat-value">30 kg CO2e</span>
+                    <span class="stat-label">Biogas Generated</span>
+                    <span class="stat-value">45 m³</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">CO₂ Emissions Prevented</span>
+                    <span class="stat-value">85 kg CO2e</span>
                 </div>
                 <div class="chart-container">
                     <canvas id="esg-chart"></canvas>
@@ -1207,86 +1275,98 @@
 
             <div class="card">
                 <div class="card-title">
-                    <span>Impact Statistics</span>
+                    <span>Environmental Impact</span>
                     <span class="card-title-icon"><i class="fas fa-chart-bar"></i></span>
                 </div>
                 <div class="process-info">
                     <div class="process-step">
-                        <div class="step-title">Water Saved</div>
-                        <div class="step-value">1,200 L</div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-title">Energy Saved</div>
-                        <div class="step-value">80 kWh</div>
+                        <div class="step-title">Energy Generated</div>
+                        <div class="step-value">270 kWh</div>
                     </div>
                     <div class="process-step">
                         <div class="step-title">Methane Emissions Prevented</div>
-                        <div class="step-value">45 kg</div>
+                        <div class="step-value">78 kg</div>
                     </div>
                     <div class="process-step">
-                        <div class="step-title">Tree Equivalent</div>
-                        <div class="step-value">15 trees</div>
+                        <div class="step-title">Fossil Fuel Equivalent</div>
+                        <div class="step-value">120 L diesel</div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-title">Carbon Credits Earned</div>
+                        <div class="step-value">4.2 tons</div>
                     </div>
                 </div>
                 <div class="flex gap-8" style="margin-top: 16px;">
-                    <button class="btn" style="flex: 1;" onclick="showToast('Report generated!')">Generate Report</button>
+                    <button class="btn" style="flex: 1;" onclick="showToast('ESG report generated!')">Generate Report</button>
                     <button class="btn btn-outline" style="flex: 1;" onclick="showToast('Data exported!')">Export Data</button>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-title">
-                    <span>Conservation History</span>
+                    <span>Sustainability Metrics</span>
                     <span class="card-title-icon"><i class="fas fa-globe"></i></span>
                 </div>
                 <div class="chart-container">
                     <canvas id="conservation-chart"></canvas>
                 </div>
                 <p style="color: #777; font-size: 0.9rem; margin-top: 8px;">
-                    These statistics highlight the positive environmental impact of using ZERODISH. This data can be used for your company's sustainability reports.
+                    These metrics showcase the environmental benefits of biogas production from organic waste, supporting your sustainability reporting and carbon offset goals.
                 </p>
             </div>
         </div>
 
-        <!-- Biopellet Page -->
-        <div id="biopellet-page" class="hidden">
+        <!-- Biogas Management Page -->
+        <div id="biogas-page" class="hidden">
             <div class="card">
                 <div class="card-title">
-                    <span>Biopellet Management</span>
-                    <span class="card-title-icon"><i class="fas fa-fire"></i></span>
+                    <span>Biogas Management</span>
+                    <span class="card-title-icon" style="background-color: var(--biogas-color);"><i class="fas fa-fire"></i></span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">Total Granules Available</span>
-                    <span class="stat-value">8.5 kg</span>
+                    <span class="stat-label">Total Gas Stored</span>
+                    <span class="stat-value">12.5 m³</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">Biopellets Produced</span>
-                    <span class="stat-value">6.2 kg</span>
+                    <span class="stat-label">Available for Use</span>
+                    <span class="stat-value">10.2 m³</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Current Methane Content</span>
+                    <span class="stat-value">64%</span>
                 </div>
                 <div class="progress-container">
-                    <div class="progress-bar" id="biopellet-progress"></div>
+                    <div class="progress-bar biogas" id="biogas-progress"></div>
                 </div>
                 <div class="text-center" style="font-size: 0.9rem; color: #777;">
-                    75% of granules converted to biopellets
+                    82% storage capacity • High quality gas ready for use
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-title">
-                    <span>Usage Statistics</span>
-                    <span class="card-title-icon"><i class="fas fa-chart-bar"></i></span>
+                    <span>Production Analytics</span>
+                    <span class="card-title-icon" style="background-color: var(--biogas-color);"><i class="fas fa-chart-bar"></i></span>
                 </div>
                 <div class="chart-container">
-                    <canvas id="biopellet-chart"></canvas>
+                    <canvas id="biogas-chart"></canvas>
                 </div>
                 <div class="process-info">
                     <div class="process-step">
-                        <div class="step-title">Conversion Efficiency</div>
-                        <div class="step-value">92%</div>
+                        <div class="step-title">Production Efficiency</div>
+                        <div class="step-value">87%</div>
                     </div>
                     <div class="process-step">
-                        <div class="step-title">Energy Generated</div>
-                        <div class="step-value">120 kWh</div>
+                        <div class="step-title">Daily Output</div>
+                        <div class="step-value">0.85 m³</div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-title">Energy Potential</div>
+                        <div class="step-value">5.1 kWh/m³</div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-title">Purity Level</div>
+                        <div class="step-value">64% CH₄</div>
                     </div>
                 </div>
             </div>
@@ -1294,123 +1374,22 @@
             <div class="card">
                 <div class="card-title">
                     <span>Usage Options</span>
-                    <span class="card-title-icon"><i class="fas fa-sync-alt"></i></span>
+                    <span class="card-title-icon" style="background-color: var(--biogas-color);"><i class="fas fa-sync-alt"></i></span>
                 </div>
                 <div class="mb-16">
-                    <h3 style="margin-bottom: 8px;">Use for Fuel</h3>
-                    <p style="color: #777; margin-bottom: 16px;">Convert granules into biopellet fuel</p>
-                    <a href="#" class="btn btn-outline btn-full" onclick="showToast('Conversion started!')">Start Conversion</a>
+                    <h3 style="margin-bottom: 8px;">Direct Energy Use</h3>
+                    <p style="color: #777; margin-bottom: 16px;">Use biogas for cooking, heating, or electricity generation</p>
+                    <a href="#" class="btn btn-biogas btn-full" onclick="showToast('Energy system activated!')">Activate Energy System</a>
                 </div>
                 <div class="mb-16">
-                    <h3 style="margin-bottom: 8px;">Use for Compost</h3>
-                    <p style="color: #777; margin-bottom: 16px;">Add granules to compost system</p>
-                    <a href="#" class="btn btn-outline btn-full" onclick="showToast('Added to compost!')">Add to Compost</a>
-                </div>
-                <div>
-                    <h3 style="margin-bottom: 8px;">Add to Exchange</h3>
-                    <p style="color: #777; margin-bottom: 16px;">Sell or trade granules with the community</p>
-                    <a href="#" class="btn btn-full" onclick="showPage('community-page')">To Community Exchange</a>
+                    <h3 style="margin-bottom: 8px;">Gas Purification</h3>
+                    <p style="color: #777; margin-bottom: 16px;">Purify biogas to higher methane content for better efficiency</p>
+                    <a href="#" class="btn btn-outline btn-full" onclick="showToast('Purification started!')">Start Purification</a>
                 </div>
             </div>
         </div>
 
-        <!-- Community Exchange Page -->
-        <div id="community-page" class="hidden">
-            <div class="card">
-                <div class="card-title">
-                    <span>Community Exchange</span>
-                    <span class="card-title-icon"><i class="fas fa-exchange-alt"></i></span>
-                </div>
-                <div class="tabs">
-                    <div class="tab active" onclick="switchTab(this, 'exchange-market')">Market</div>
-                    <div class="tab" onclick="switchTab(this, 'exchange-my')">My Listings</div>
-                    <div class="tab" onclick="switchTab(this, 'exchange-history')">History</div>
-                </div>
-            </div>
 
-            <div class="card">
-                <div class="card-title">
-                    <span>Available Granules</span>
-                    <div class="flex gap-8">
-                        <button class="btn btn-small" onclick="showToast('Filter applied!')">
-                            <i class="fas fa-filter" style="margin-right: 4px;"></i> Filter
-                        </button>
-                        <button class="btn btn-small btn-outline" onclick="showToast('Sort changed!')">
-                            <i class="fas fa-sort" style="margin-right: 4px;"></i> Sort
-                        </button>
-                    </div>
-                </div>
-                <div class="notification-list">
-                    <div class="notification-item" onclick="showToast('Exchange request sent!')">
-                        <div class="notification-icon-container" style="background-color: var(--secondary-color);"><i class="fas fa-box"></i></div>
-                        <div class="notification-content">
-                            <div class="flex space-between align-center">
-                                <div class="notification-title">Premium Organic Granules</div>
-                                <div style="font-weight: bold; color: var(--primary-color);">5.2 kg</div>
-                            </div>
-                            <div style="margin: 4px 0; font-size: 0.85rem;">
-                                Organic granules from vegetable waste, ideal for compost.
-                            </div>
-                            <div class="flex space-between align-center">
-                                <div class="notification-time">By: EcoGarden</div>
-                                <button class="btn btn-small" onclick="event.stopPropagation(); showToast('Exchange confirmed!')">Exchange</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="notification-item" onclick="showToast('Exchange request sent!')">
-                        <div class="notification-icon-container" style="background-color: var(--secondary-color);"><i class="fas fa-box"></i></div>
-                        <div class="notification-content">
-                            <div class="flex space-between align-center">
-                                <div class="notification-title">Mixed Granules</div>
-                                <div style="font-weight: bold; color: var(--primary-color);">3.8 kg</div>
-                            </div>
-                            <div style="margin: 4px 0; font-size: 0.85rem;">
-                                Granules from mixed food waste, suitable for fuel.
-                            </div>
-                            <div class="flex space-between align-center">
-                                <div class="notification-time">By: GreenRestaurant</div>
-                                <button class="btn btn-small" onclick="event.stopPropagation(); showToast('Exchange confirmed!')">Exchange</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="notification-item" onclick="showToast('Exchange request sent!')">
-                        <div class="notification-icon-container" style="background-color: var(--secondary-color);"><i class="fas fa-box"></i></div>
-                        <div class="notification-content">
-                            <div class="flex space-between align-center">
-                                <div class="notification-title">Coffee Granules</div>
-                                <div style="font-weight: bold; color: var(--primary-color);">2.1 kg</div>
-                            </div>
-                            <div style="margin: 4px 0; font-size: 0.85rem;">
-                                Granules from coffee grounds, strong aroma and great for plants.
-                            </div>
-                            <div class="flex space-between align-center">
-                                <div class="notification-time">By: CafeZero</div>
-                                <button class="btn btn-small" onclick="event.stopPropagation(); showToast('Exchange confirmed!')">Exchange</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">
-                    <span>My Granule Listings</span>
-                    <button class="btn btn-small" onclick="showToast('Granule added!')">+ Add</button>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Granules Available for Exchange</span>
-                    <span class="stat-value">4.5 kg</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Exchange Points</span>
-                    <span class="stat-value">120</span>
-                </div>
-                <div class="chart-container" style="height: 120px;">
-                    <canvas id="exchange-chart"></canvas>
-                </div>
-                <button class="btn btn-outline btn-full" style="margin-top: 16px;" onclick="showToast('Listings managed!')">Manage Granule Listings</button>
-            </div>
-        </div>
 
         <!-- Bottom Navigation -->
         <nav class="bottom-nav">
@@ -1426,13 +1405,13 @@
                 <div class="nav-icon"><i class="fas fa-history"></i></div>
                 <span>History</span>
             </a>
+            <a href="#" class="nav-item" onclick="showPage('biogas-page')">
+                <div class="nav-icon"><i class="fas fa-fire"></i></div>
+                <span>Biogas</span>
+            </a>
             <a href="#" class="nav-item" onclick="showPage('settings-page')">
                 <div class="nav-icon"><i class="fas fa-cog"></i></div>
                 <span>Settings</span>
-            </a>
-            <a href="#" class="nav-item" onclick="showPage('help-page')">
-                <div class="nav-icon"><i class="fas fa-question-circle"></i></div>
-                <span>Help</span>
             </a>
         </nav>
 
@@ -1442,26 +1421,24 @@
 
     <script>
         // Global chart variables and configuration
-        let historyChart, processChart, esgChart, biopelletChart, exchangeChart, homeChart, conservationChart;
+        let historyChart, processChart, esgChart, biogasChart, homeChart, conservationChart;
         let currentChartType = 'bar';
         let currentTimeRange = 'daily';
         
-        // Daily data - waste processed each day for the past week
+        // Updated data for biogas production (m³) instead of just waste weight
         const dailyData = {
             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            values: [0.7, 1.2, 0.9, 1.3, 0.8, 0.5, 1.2]
+            values: [0.21, 0.36, 0.27, 0.39, 0.24, 0.15, 0.36] // m³ of biogas
         };
         
-        // Weekly data - waste processed each week for the past 4 weeks
         const weeklyData = {
             labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-            values: [5.2, 6.1, 4.9, 5.6]
+            values: [1.56, 1.83, 1.47, 1.68] // m³ of biogas
         };
         
-        // Monthly data - waste processed each month for the past 6 months
         const monthlyData = {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-            values: [18.5, 20.3, 19.7, 22.1, 23.5, 24.5]
+            values: [5.55, 6.09, 5.91, 6.63, 7.05, 7.35] // m³ of biogas
         };
         
         // Chart colors
@@ -1470,6 +1447,8 @@
             primaryLight: '#4db6a2',
             secondary: '#f8b500',
             accent: '#ff6b6b',
+            biogas: '#2196F3',
+            biogasLight: '#64B5F6',
             gray: '#efefef'
         };
         
@@ -1499,18 +1478,16 @@
             } else if (pageId === 'esg-page') {
                 if (!esgChart) initESGChart();
                 if (!conservationChart) initConservationChart();
-            } else if (pageId === 'biopellet-page' && !biopelletChart) {
-                initBiopelletChart();
-            } else if (pageId === 'community-page' && !exchangeChart) {
-                initExchangeChart();
+            } else if (pageId === 'biogas-page' && !biogasChart) {
+                initBiogasChart();
             } else if (pageId === 'home-page' && !homeChart) {
                 initHomeChart();
             }
 
             // Reset progress bars when switching pages
             document.querySelectorAll('.progress-bar').forEach(bar => {
-                if (bar.id === 'biopellet-progress') {
-                    setTimeout(() => { bar.style.width = '75%'; }, 300);
+                if (bar.id === 'biogas-progress') {
+                    setTimeout(() => { bar.style.width = '82%'; }, 300);
                 } else {
                     setTimeout(() => { bar.style.width = '45%'; }, 300);
                 }
@@ -1592,10 +1569,10 @@
                         datasets: [{
                             data: data.values,
                             backgroundColor: [
+                                chartColors.biogas,
+                                chartColors.biogasLight,
                                 chartColors.primary,
-                                chartColors.primaryLight,
                                 chartColors.secondary,
-                                chartColors.accent,
                                 '#6c757d',
                                 '#28a745',
                                 '#fd7e14'
@@ -1618,7 +1595,7 @@
                             tooltip: {
                                 callbacks: {
                                     label: function(context) {
-                                        return `${context.label}: ${context.raw} kg`;
+                                        return `${context.label}: ${context.raw} m³`;
                                     }
                                 }
                             }
@@ -1631,15 +1608,15 @@
                     data: {
                         labels: data.labels,
                         datasets: [{
-                            label: 'Waste Processed (kg)',
+                            label: 'Biogas Produced (m³)',
                             data: data.values,
-                            backgroundColor: currentChartType === 'line' ? chartColors.primary : data.labels.map((_, i) => {
-                                return i % 2 === 0 ? chartColors.primary : chartColors.primaryLight;
+                            backgroundColor: currentChartType === 'line' ? chartColors.biogas : data.labels.map((_, i) => {
+                                return i % 2 === 0 ? chartColors.biogas : chartColors.biogasLight;
                             }),
-                            borderColor: chartColors.primary,
+                            borderColor: chartColors.biogas,
                             borderWidth: 2,
                             tension: 0.3,
-                            pointBackgroundColor: chartColors.primary,
+                            pointBackgroundColor: chartColors.biogas,
                             pointRadius: currentChartType === 'line' ? 4 : 0
                         }]
                     },
@@ -1651,7 +1628,7 @@
                                 beginAtZero: true,
                                 ticks: {
                                     callback: function(value) {
-                                        return value + ' kg';
+                                        return value + ' m³';
                                     }
                                 }
                             }
@@ -1663,7 +1640,7 @@
                             tooltip: {
                                 callbacks: {
                                     label: function(context) {
-                                        return `Waste: ${context.raw} kg`;
+                                        return `Biogas: ${context.raw} m³`;
                                     }
                                 }
                             }
@@ -1683,14 +1660,14 @@
                 data: {
                     labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
                     datasets: [{
-                        label: 'Daily Waste (kg)',
-                        data: [0.7, 1.2, 0.9, 1.3, 0.8, 0.5, 1.2],
-                        borderColor: chartColors.primary,
-                        backgroundColor: 'rgba(0, 134, 110, 0.1)',
+                        label: 'Daily Biogas (m³)',
+                        data: [0.21, 0.36, 0.27, 0.39, 0.24, 0.15, 0.36],
+                        borderColor: chartColors.biogas,
+                        backgroundColor: 'rgba(33, 150, 243, 0.1)',
                         borderWidth: 2,
                         tension: 0.3,
                         fill: true,
-                        pointBackgroundColor: chartColors.primary,
+                        pointBackgroundColor: chartColors.biogas,
                         pointRadius: 3
                     }]
                 },
@@ -1722,7 +1699,7 @@
             });
         }
 
-        // Initialize process chart
+        // Initialize process chart with biogas-specific metrics
         function initProcessChart() {
             const ctx = document.getElementById('process-chart').getContext('2d');
             processChart = new Chart(ctx, {
@@ -1733,9 +1710,9 @@
                         {
                             label: 'Temperature (°C)',
                             data: Array.from({length: 60}, (_, i) => {
-                                if (i < 15) return 25 + i * 6;
-                                if (i < 45) return 110 + Math.sin(i/5) * 2;
-                                return 110 - (i-45) * 2;
+                                if (i < 10) return 25 + i * 1.5;
+                                if (i < 50) return 38 + Math.sin(i/8) * 1;
+                                return 38 + (i-50) * 0.1;
                             }),
                             borderColor: chartColors.accent,
                             backgroundColor: 'transparent',
@@ -1745,13 +1722,13 @@
                             yAxisID: 'y'
                         },
                         {
-                            label: 'Humidity (%)',
+                            label: 'Gas Pressure (bar)',
                             data: Array.from({length: 60}, (_, i) => {
-                                if (i < 10) return 80 - i * 2;
-                                if (i < 45) return 60 - i * 1;
-                                return 15;
+                                if (i < 15) return 0.1 + i * 0.08;
+                                if (i < 45) return 1.2 + Math.sin(i/6) * 0.1;
+                                return 1.2 + (i-45) * 0.01;
                             }),
-                            borderColor: chartColors.secondary,
+                            borderColor: chartColors.biogas,
                             backgroundColor: 'transparent',
                             borderWidth: 2,
                             tension: 0.3,
@@ -1789,14 +1766,14 @@
                             position: 'right',
                             title: {
                                 display: true,
-                                text: 'Humidity (%)',
-                                color: chartColors.secondary,
+                                text: 'Pressure (bar)',
+                                color: chartColors.biogas,
                                 font: {
                                     size: 10
                                 }
                             },
                             ticks: {
-                                color: chartColors.secondary,
+                                color: chartColors.biogas,
                                 font: {
                                     size: 9
                                 }
@@ -1836,19 +1813,19 @@
             });
         }
 
-        // Initialize ESG chart
+        // Initialize ESG chart with biogas focus
         function initESGChart() {
             const ctx = document.getElementById('esg-chart').getContext('2d');
             esgChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Landfill Diverted', 'Compost Created', 'Biopellets Produced'],
+                    labels: ['Biogas Generated', 'Waste Diverted', 'CO₂ Prevented'],
                     datasets: [{
-                        data: [150, 75, 45],
+                        data: [45, 150, 85],
                         backgroundColor: [
+                            chartColors.biogas,
                             chartColors.primary,
-                            chartColors.secondary,
-                            chartColors.primaryLight
+                            chartColors.secondary
                         ],
                         borderWidth: 1
                     }]
@@ -1868,6 +1845,7 @@
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
+                                    if (context.dataIndex === 0) return `${context.label}: ${context.raw} m³`;
                                     return `${context.label}: ${context.raw} kg`;
                                 }
                             }
@@ -1886,14 +1864,14 @@
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
                     datasets: [
                         {
-                            label: 'Waste Diverted (kg)',
-                            data: [95, 110, 125, 135, 140, 150],
-                            backgroundColor: chartColors.primary,
+                            label: 'Biogas Generated (m³)',
+                            data: [28, 32, 35, 38, 42, 45],
+                            backgroundColor: chartColors.biogas,
                             borderWidth: 0
                         },
                         {
-                            label: 'CO2 Reduction (kg)',
-                            data: [19, 22, 25, 27, 28, 30],
+                            label: 'CO₂ Prevented (kg)',
+                            data: [60, 68, 74, 78, 82, 85],
                             backgroundColor: chartColors.secondary,
                             borderWidth: 0
                         }
@@ -1934,26 +1912,26 @@
             });
         }
 
-        // Initialize Biopellet chart
-        function initBiopelletChart() {
-            const ctx = document.getElementById('biopellet-chart').getContext('2d');
-            biopelletChart = new Chart(ctx, {
+        // Initialize Biogas chart
+        function initBiogasChart() {
+            const ctx = document.getElementById('biogas-chart').getContext('2d');
+            biogasChart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
                     datasets: [
                         {
-                            label: 'Production (kg)',
-                            data: [3.2, 4.1, 5.0, 5.5, 6.0, 6.2],
-                            borderColor: chartColors.primary,
-                            backgroundColor: 'rgba(0, 134, 110, 0.1)',
+                            label: 'Production (m³)',
+                            data: [28, 32, 35, 38, 42, 45],
+                            borderColor: chartColors.biogas,
+                            backgroundColor: 'rgba(33, 150, 243, 0.1)',
                             borderWidth: 2,
                             tension: 0.3,
                             fill: true
                         },
                         {
-                            label: 'Usage (kg)',
-                            data: [2.5, 3.5, 4.2, 4.8, 5.2, 5.5],
+                            label: 'Consumption (m³)',
+                            data: [25, 28, 31, 34, 37, 40],
                             borderColor: chartColors.secondary,
                             backgroundColor: 'rgba(248, 181, 0, 0.1)',
                             borderWidth: 2,
@@ -1970,7 +1948,7 @@
                             beginAtZero: true,
                             ticks: {
                                 callback: function(value) {
-                                    return value + ' kg';
+                                    return value + ' m³';
                                 },
                                 font: {
                                     size: 10
@@ -2000,47 +1978,7 @@
             });
         }
 
-        // Initialize Exchange chart
-        function initExchangeChart() {
-            const ctx = document.getElementById('exchange-chart').getContext('2d');
-            exchangeChart = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: ['Listed', 'Exchanged', 'Reserved'],
-                    datasets: [{
-                        data: [4.5, 3.2, 0.8],
-                        backgroundColor: [
-                            chartColors.primary,
-                            chartColors.secondary,
-                            chartColors.gray
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                boxWidth: 10,
-                                font: {
-                                    size: 9
-                                }
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return `${context.label}: ${context.raw} kg`;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
+
 
         // Initialize History chart
         function initHistoryChart() {
@@ -2062,7 +2000,7 @@
             setTimeout(() => {
                 document.getElementById('home-progress').style.width = '45%';
                 document.getElementById('process-progress').style.width = '45%';
-                document.getElementById('biopellet-progress').style.width = '75%';
+                document.getElementById('biogas-progress').style.width = '82%';
             }, 300);
             
             initHomeChart();
