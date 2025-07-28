@@ -2802,41 +2802,20 @@
             }
         }
 
-        // Advanced scroll behavior for header
+        // Simple scroll behavior for header - always visible
         let lastScrollTop = 0;
-        let scrollTimeout;
-        let isHeaderVisible = true;
 
         function handleScroll() {
             const header = document.querySelector('.header');
             const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Clear previous timeout
-            if (scrollTimeout) {
-                clearTimeout(scrollTimeout);
-            }
-            
             // Determine scroll direction
             if (currentScrollTop > lastScrollTop && currentScrollTop > 100) {
                 // Scrolling down - hide header
-                if (isHeaderVisible) {
-                    header.classList.add('header-hidden');
-                    isHeaderVisible = false;
-                }
+                header.classList.add('header-hidden');
             } else if (currentScrollTop < lastScrollTop) {
                 // Scrolling up - show header
-                if (!isHeaderVisible) {
-                    header.classList.remove('header-hidden');
-                    isHeaderVisible = true;
-                }
-                
-                // Set timeout to hide header again after 1 second of no scrolling
-                scrollTimeout = setTimeout(() => {
-                    if (currentScrollTop > 100) {
-                        header.classList.add('header-hidden');
-                        isHeaderVisible = false;
-                    }
-                }, 1000);
+                header.classList.remove('header-hidden');
             }
             
             lastScrollTop = currentScrollTop;
