@@ -16,8 +16,8 @@
             --accent-color: #ff6b6b;
             --biogas-color: #2196F3;
             --biogas-light: #64B5F6;
-            --biocalisator-color: #2e7d32;
-            --biocalisator-light: #66bb6a;
+            --biocatalyst-color: #2e7d32;
+            --biocatalyst-light: #66bb6a;
             --text-dark: #333333;
             --text-light: #f5f5f5;
             --bg-light: #ffffff;
@@ -270,11 +270,11 @@
             box-shadow: 0 5px 15px rgba(33, 150, 243, 0.2);
         }
 
-        .btn-biocalisator {
-            background-color: var(--biocalisator-color);
+        .btn-biocatalyst {
+            background-color: var(--biocatalyst-color);
         }
 
-        .btn-biocalisator:hover {
+        .btn-biocatalyst:hover {
             background-color: #1b5e20;
             box-shadow: 0 5px 15px rgba(46, 125, 50, 0.2);
         }
@@ -326,8 +326,8 @@
             box-shadow: 0 0 8px rgba(33, 150, 243, 0.3);
         }
 
-        .progress-bar.biocalisator {
-            background: linear-gradient(to right, var(--biocalisator-color), var(--biocalisator-light));
+        .progress-bar.biocatalyst {
+            background: linear-gradient(to right, var(--biocatalyst-color), var(--biocatalyst-light));
             box-shadow: 0 0 8px rgba(46, 125, 50, 0.3);
         }
 
@@ -386,7 +386,7 @@
             color: #1976D2;
         }
 
-        .badge-biocalisator {
+        .badge-biocatalyst {
             background-color: #e8f5e8;
             color: #2e7d32;
         }
@@ -867,7 +867,7 @@
             color: var(--text-light);
         }
 
-        .status-badge.biocalisator {
+        .status-badge.biocatalyst {
             background-color: rgba(46, 125, 50, 0.3);
             color: var(--text-light);
         }
@@ -952,8 +952,8 @@
             background-color: var(--biogas-color);
         }
 
-        .stat-icon.biocalisator {
-            background-color: var(--biocalisator-color);
+        .stat-icon.biocatalyst {
+            background-color: var(--biocatalyst-color);
         }
 
         .stat-icon.weekly {
@@ -1072,8 +1072,8 @@
             flex-shrink: 0;
         }
 
-        .notification-icon.biocalisator {
-            background-color: var(--biocalisator-color);
+        .notification-icon.biocatalyst {
+            background-color: var(--biocatalyst-color);
         }
 
         .notification-icon.warning {
@@ -1167,13 +1167,13 @@
             }
         }
 
-        /* Biocalisator indicator on home page */
-        .biocalisator-indicator {
+        /* Biocatalyst indicator on home page */
+        .biocatalyst-indicator {
             display: inline-flex;
             align-items: center;
             gap: 6px;
             font-size: 0.8rem;
-            color: var(--biocalisator-color);
+            color: var(--biocatalyst-color);
             background-color: rgba(46, 125, 50, 0.1);
             padding: 4px 8px;
             border-radius: 8px;
@@ -1204,7 +1204,7 @@
                     <div class="status-title">
                         <div class="status-badges">
                             <span class="status-badge processing">Processing</span>
-                            <span class="status-badge biocalisator">
+                            <span class="status-badge biocatalyst">
                                 <i class="fas fa-seedling"></i>
                                 Active
                             </span>
@@ -1246,7 +1246,7 @@
                     </div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon biocalisator">
+                    <div class="stat-icon biocatalyst">
                         <i class="fas fa-seedling"></i>
                     </div>
                     <div class="stat-content">
@@ -1283,12 +1283,12 @@
                     <span class="notification-count">3 new</span>
                 </div>
                 <div class="notifications-list">
-                    <div class="notification-item-modern" onclick="showToast('Biocalisator running optimally!')">
-                        <div class="notification-icon biocalisator">
+                    <div class="notification-item-modern" onclick="showToast('Biocatalyst running optimally!')">
+                        <div class="notification-icon biocatalyst">
                             <i class="fas fa-seedling"></i>
                         </div>
                         <div class="notification-content">
-                            <div class="notification-title">Biocalisator: 28% efficiency boost achieved</div>
+                            <div class="notification-title">Biocatalyst: 28% efficiency boost achieved</div>
                             <div class="notification-time">5 minutes ago</div>
                         </div>
                         <div class="notification-arrow">
@@ -1348,13 +1348,13 @@
 
             <div class="card">
                 <div class="card-title">
-                    <span>Biocalisator Control</span>
-                    <span class="card-title-icon" style="background-color: var(--biocalisator-color);"><i class="fas fa-seedling"></i></span>
+                    <span>Biocatalyst Control</span>
+                    <span class="card-title-icon" style="background-color: var(--biocatalyst-color);"><i class="fas fa-seedling"></i></span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">Status</span>
                     <span class="stat-value">
-                        <span class="badge badge-biocalisator" id="biocalisator-status">Active</span>
+                        <span class="badge badge-biocatalyst" id="biocalisator-status">Active</span>
                     </span>
                 </div>
                 <div class="stat-item">
@@ -1366,10 +1366,10 @@
                     <span class="stat-value">85%</span>
                 </div>
                 <div class="progress-container">
-                    <div class="progress-bar biocalisator" id="catalyst-progress" style="width: 85%;"></div>
+                    <div class="progress-bar biocatalyst" id="catalyst-progress" style="width: 85%;"></div>
                 </div>
                 <div class="flex gap-8" style="margin-top: 16px;">
-                    <button class="btn btn-biocalisator" style="flex: 1;" id="biocalisator-toggle" onclick="toggleBiocalisator()">
+                    <button class="btn btn-biocatalyst" style="flex: 1;" id="biocalisator-toggle" onclick="toggleBiocalisator()">
                         <i class="fas fa-pause" style="margin-right: 8px;"></i>Deactivate
                     </button>
                     <button class="btn btn-outline" style="flex: 1;" onclick="showToast('Catalyst dosage adjusted!')">
@@ -1464,7 +1464,7 @@
                     <span class="stat-value">0.31 m³</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">Biocalisator Enhancement</span>
+                    <span class="stat-label">Biocatalyst Enhancement</span>
                     <span class="stat-value">+28% improvement</span>
                 </div>
             </div>
@@ -1491,7 +1491,7 @@
                             <td>50 min</td>
                             <td>1.2 kg</td>
                             <td>0.46 m³</td>
-                            <td><span class="badge badge-biocalisator">On</span></td>
+                            <td><span class="badge badge-biocatalyst">On</span></td>
                             <td><span class="badge badge-completed"><i class="fa-solid fa-check"></i></span></td>
                         </tr>
                         <tr>
@@ -1499,7 +1499,7 @@
                             <td>48 min</td>
                             <td>0.9 kg</td>
                             <td>0.35 m³</td>
-                            <td><span class="badge badge-biocalisator">On</span></td>
+                            <td><span class="badge badge-biocatalyst">On</span></td>
                             <td><span class="badge badge-completed"><i class="fa-solid fa-check"></i></span></td>
                         </tr>
                         <tr>
@@ -1529,10 +1529,10 @@
                     </div>
                 </div>
                 <div class="notification-list">
-                    <div class="notification-item" onclick="showToast('Biocalisator running optimally!')">
-                        <div class="notification-icon-container" style="background-color: var(--biocalisator-color);"><i class="fas fa-seedling"></i></div>
+                    <div class="notification-item" onclick="showToast('Biocatalyst running optimally!')">
+                        <div class="notification-icon-container" style="background-color: var(--biocatalyst-color);"><i class="fas fa-seedling"></i></div>
                         <div class="notification-content">
-                            <div class="notification-title">Biocalisator: 28% efficiency boost achieved</div>
+                            <div class="notification-title">Biocatalyst: 28% efficiency boost achieved</div>
                             <div class="notification-time">5 minutes ago</div>
                         </div>
                     </div>
@@ -1553,14 +1553,14 @@
                     <div class="notification-item" onclick="showToast('Gas quality alert!')">
                         <div class="notification-icon-container" style="background-color: var(--biogas-color);"><i class="fas fa-flask"></i></div>
                         <div class="notification-content">
-                            <div class="notification-title">High methane content detected: 65% purity (enhanced by biocalisator)</div>
+                            <div class="notification-title">High methane content detected: 65% purity (enhanced by biocatalyst)</div>
                             <div class="notification-time">4 hours ago</div>
                         </div>
                     </div>
                     <div class="notification-item" onclick="showToast('Catalyst reminder!')">
-                        <div class="notification-icon-container" style="background-color: var(--biocalisator-color);"><i class="fas fa-flask"></i></div>
+                        <div class="notification-icon-container" style="background-color: var(--biocatalyst-color);"><i class="fas fa-flask"></i></div>
                         <div class="notification-content">
-                            <div class="notification-title">Biocalisator reservoir needs refilling in 3 days</div>
+                            <div class="notification-title">Biocatalyst reservoir needs refilling in 3 days</div>
                             <div class="notification-time">Yesterday, 2:30 PM</div>
                         </div>
                     </div>
@@ -1599,11 +1599,11 @@
 
             <div class="card">
                 <div class="card-title">
-                    <span>Biocalisator Settings</span>
-                    <span class="card-title-icon" style="background-color: var(--biocalisator-color);"><i class="fas fa-seedling"></i></span>
+                    <span>Biocatalyst Settings</span>
+                    <span class="card-title-icon" style="background-color: var(--biocatalyst-color);"><i class="fas fa-seedling"></i></span>
                 </div>
                 <div class="toggle-container">
-                    <span class="toggle-label">Auto-activate biocalisator</span>
+                    <span class="toggle-label">Auto-activate biocatalyst</span>
                     <label class="toggle">
                         <input type="checkbox" checked onchange="showToast(this.checked ? 'Auto-activation enabled!' : 'Auto-activation disabled!')">
                         <span class="toggle-slider"></span>
@@ -1693,9 +1693,9 @@
                     </label>
                 </div>
                 <div class="toggle-container">
-                    <span class="toggle-label">Biocalisator status alerts</span>
+                    <span class="toggle-label">Biocatalyst status alerts</span>
                     <label class="toggle">
-                        <input type="checkbox" checked onchange="showToast(this.checked ? 'Biocalisator alerts enabled!' : 'Biocalisator alerts disabled!')">
+                        <input type="checkbox" checked onchange="showToast(this.checked ? 'Biocatalyst alerts enabled!' : 'Biocatalyst alerts disabled!')">
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
@@ -1762,12 +1762,12 @@
                         </div>
                         <div class="accordion-content">
                             <p>Check the pH level (should be 6.8-7.2) and temperature (35-40°C). Ensure adequate organic matter and proper mixing.</p>
-                            <p>If production remains low, try activating the biocalisator or adjusting the C:N ratio by adding more carbon-rich materials.</p>
+                            <p>If production remains low, try activating the biocatalyst or adjusting the C:N ratio by adding more carbon-rich materials.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <div class="accordion-header" onclick="toggleAccordion(this)">
-                            Biocalisator not activating
+                            Biocatalyst not activating
                             <span class="accordion-icon">+</span>
                         </div>
                         <div class="accordion-content">
@@ -1792,7 +1792,7 @@
                         </div>
                         <div class="accordion-content">
                             <p>This usually indicates incomplete digestion. Check temperature consistency and ensure proper pH levels.</p>
-                            <p>Activate the biocalisator to enhance microbial activity and improve methane production efficiency.</p>
+                            <p>Activate the biocatalyst to enhance microbial activity and improve methane production efficiency.</p>
                         </div>
                     </div>
                 </div>
@@ -1815,7 +1815,7 @@
                     <span class="stat-value">58 m³</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">Biocalisator Enhancement</span>
+                    <span class="stat-label">Biocatalyst Enhancement</span>
                     <span class="stat-value">+13 m³ additional gas</span>
                 </div>
                 <div class="stat-item">
@@ -1865,7 +1865,7 @@
                     <canvas id="conservation-chart"></canvas>
                 </div>
                 <p style="color: #777; font-size: 0.9rem; margin-top: 8px;">
-                    These metrics showcase the environmental benefits of biogas production from organic waste, enhanced by our biocalisator technology, supporting your sustainability reporting and carbon offset goals.
+                    These metrics showcase the environmental benefits of biogas production from organic waste, enhanced by our biocatalyst technology, supporting your sustainability reporting and carbon offset goals.
                 </p>
             </div>
         </div>
@@ -2090,10 +2090,10 @@
         let currentChartType = 'bar';
         let currentTimeRange = 'daily';
         
-        // Biocalisator state
+                // Biocatalyst state
         let biocalisatorActive = true;
-        
-        // Updated data for biogas production with biocalisator enhancement
+
+        // Updated data for biogas production with biocatalyst enhancement
         const dailyData = {
             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             values: [0.27, 0.46, 0.35, 0.50, 0.31, 0.19, 0.46] // m³ of biogas (enhanced)
@@ -2117,12 +2117,12 @@
             accent: '#ff6b6b',
             biogas: '#2196F3',
             biogasLight: '#64B5F6',
-            biocalisator: '#2e7d32',
-            biocalisatorLight: '#66bb6a',
+            biocatalyst: '#2e7d32',
+            biocatalystLight: '#66bb6a',
             gray: '#efefef'
         };
 
-        // Function to toggle biocalisator
+        // Function to toggle biocatalyst
         function toggleBiocalisator() {
             biocalisatorActive = !biocalisatorActive;
             const status = document.getElementById('biocalisator-status');
@@ -2140,12 +2140,12 @@
             
             if (biocalisatorActive) {
                 status.textContent = 'Active';
-                status.className = 'badge badge-biocalisator';
+                status.className = 'badge badge-biocatalyst';
                 toggle.innerHTML = '<i class="fas fa-pause" style="margin-right: 8px;"></i>Deactivate';
-                toggle.className = 'btn btn-biocalisator';
+                toggle.className = 'btn btn-biocatalyst';
                 enhancementLevel.textContent = '+28% efficiency';
-                homeIndicator.innerHTML = '<i class="fas fa-seedling"></i> Biocalisator Active';
-                homeIndicator.style.color = 'var(--biocalisator-color)';
+                homeIndicator.innerHTML = '<i class="fas fa-seedling"></i> Biocatalyst Active';
+                homeIndicator.style.color = 'var(--biocatalyst-color)';
                 homeIndicator.style.backgroundColor = 'rgba(46, 125, 50, 0.1)';
                 homeEnhancement.textContent = '+28% efficiency';
                 homeProgressText.textContent = '45% complete • Estimated completion time: 27 minutes';
@@ -2155,14 +2155,14 @@
                 homeBiogasOutput.textContent = '0.46 m³';
                 methaneContent.textContent = '65%';
                 biogasMethaneContent.textContent = '65%';
-                showToast('Biocalisator activated! Enhanced production started.');
+                showToast('Biocatalyst activated! Enhanced production started.');
             } else {
                 status.textContent = 'Inactive';
                 status.className = 'badge badge-inactive';
                 toggle.innerHTML = '<i class="fas fa-play" style="margin-right: 8px;"></i>Activate';
                 toggle.className = 'btn btn-outline';
                 enhancementLevel.textContent = 'Standard mode';
-                homeIndicator.innerHTML = '<i class="fas fa-seedling"></i> Biocalisator Inactive';
+                homeIndicator.innerHTML = '<i class="fas fa-seedling"></i> Biocatalyst Inactive';
                 homeIndicator.style.color = '#616161';
                 homeIndicator.style.backgroundColor = '#fafafa';
                 homeEnhancement.textContent = 'Standard mode';
@@ -2173,7 +2173,7 @@
                 homeBiogasOutput.textContent = '0.36 m³';
                 methaneContent.textContent = '62%';
                 biogasMethaneContent.textContent = '62%';
-                showToast('Biocalisator deactivated. Standard production mode.');
+                showToast('Biocatalyst deactivated. Standard production mode.');
             }
         }
         
@@ -2328,13 +2328,13 @@
                         datasets: [{
                             label: 'Biogas Produced (m³)',
                             data: data.values,
-                            backgroundColor: currentChartType === 'line' ? chartColors.biocalisator : data.labels.map((_, i) => {
-                                return i % 2 === 0 ? chartColors.biocalisator : chartColors.biocalisatorLight;
+                            backgroundColor: currentChartType === 'line' ? chartColors.biocatalyst : data.labels.map((_, i) => {
+                                return i % 2 === 0 ? chartColors.biocatalyst : chartColors.biocatalystLight;
                             }),
-                            borderColor: chartColors.biocalisator,
+                            borderColor: chartColors.biocatalyst,
                             borderWidth: 2,
                             tension: 0.3,
-                            pointBackgroundColor: chartColors.biocalisator,
+                            pointBackgroundColor: chartColors.biocatalyst,
                             pointRadius: currentChartType === 'line' ? 4 : 0
                         }]
                     },
@@ -2378,12 +2378,12 @@
                     datasets: [{
                         label: 'Daily Biogas (m³)',
                         data: [0.27, 0.46, 0.35, 0.50, 0.31, 0.19, 0.46],
-                        borderColor: chartColors.biocalisator,
+                        borderColor: chartColors.biocatalyst,
                         backgroundColor: 'rgba(46, 125, 50, 0.1)',
                         borderWidth: 2,
                         tension: 0.3,
                         fill: true,
-                        pointBackgroundColor: chartColors.biocalisator,
+                        pointBackgroundColor: chartColors.biocatalyst,
                         pointRadius: 3
                     }]
                 },
@@ -2440,13 +2440,13 @@
                             yAxisID: 'y1'
                         },
                         {
-                            label: 'Biocalisator Activity',
+                            label: 'Biocatalyst Activity',
                             data: Array.from({length: 60}, (_, i) => {
                                 if (i < 5) return 0;
                                 if (i < 55) return 85 + Math.sin(i/4) * 5;
                                 return 90;
                             }),
-                            borderColor: chartColors.biocalisator,
+                            borderColor: chartColors.biocatalyst,
                             backgroundColor: 'transparent',
                             borderWidth: 2,
                             tension: 0.3,
@@ -2527,12 +2527,12 @@
             esgChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Biogas Generated', 'Biocalisator Boost', 'Waste Diverted', 'CO₂ Prevented'],
+                    labels: ['Biogas Generated', 'Biocatalyst Boost', 'Waste Diverted', 'CO₂ Prevented'],
                     datasets: [{
                         data: [45, 13, 150, 109],
                         backgroundColor: [
                             chartColors.biogas,
-                            chartColors.biocalisator,
+                            chartColors.biocatalyst,
                             chartColors.primary,
                             chartColors.secondary
                         ],
@@ -2629,9 +2629,9 @@
                             fill: true
                         },
                         {
-                            label: 'Biocalisator Enhancement (m³)',
+                            label: 'Biocatalyst Enhancement (m³)',
                             data: [8, 9, 10, 11, 12, 13],
-                            borderColor: chartColors.biocalisator,
+                            borderColor: chartColors.biocatalyst,
                             backgroundColor: 'rgba(46, 125, 50, 0.1)',
                             borderWidth: 2,
                             tension: 0.3,

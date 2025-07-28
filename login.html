@@ -301,6 +301,15 @@
             font-size: 0.9rem;
             color: var(--text-dark);
         }
+
+        .prototype-hint {
+            text-align: center;
+            margin-top: 15px;
+            color: #999;
+            font-size: 1rem;
+        }
+
+
     </style>
 </head>
 <body>
@@ -327,7 +336,7 @@
                     <label class="form-label" for="email">Email Address</label>
                     <div class="input-group">
                         <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" id="email" class="form-input input-with-icon" placeholder="Enter your email" required>
+                        <input type="email" id="email" class="form-input input-with-icon" placeholder="Enter your email">
                     </div>
                 </div>
 
@@ -335,7 +344,7 @@
                     <label class="form-label" for="password">Password</label>
                     <div class="input-group">
                         <i class="fas fa-lock input-icon"></i>
-                        <input type="password" id="password" class="form-input input-with-icon" placeholder="Enter your password" required>
+                        <input type="password" id="password" class="form-input input-with-icon" placeholder="Enter your password">
                     </div>
                 </div>
 
@@ -372,6 +381,10 @@
             <div class="register-link">
                 Don't have an account? <a href="register.html">Sign up</a>
             </div>
+            
+            <div class="prototype-hint">
+                <small>💡 Prototype: No input required - just click Sign In</small>
+            </div>
         </div>
     </div>
     </div>
@@ -380,9 +393,6 @@
         function handleLogin(event) {
             event.preventDefault();
             
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const remember = document.getElementById('remember').checked;
             const loginBtn = document.getElementById('login-btn');
             const btnText = loginBtn.querySelector('.btn-text');
             const loading = loginBtn.querySelector('.loading');
@@ -397,7 +407,7 @@
             setTimeout(() => {
                 successMessage.style.display = 'block';
                 localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('userEmail', email || 'demo@zerodish.com');
+                localStorage.setItem('userEmail', 'demo@zerodish.com');
                 
                 // Redirect to main app after 1 second
                 setTimeout(() => {
