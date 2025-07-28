@@ -74,8 +74,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom-left-radius: 18px;
-            border-bottom-right-radius: 18px;
             box-shadow: 0 4px 20px rgba(0, 134, 110, 0.15);
         }
 
@@ -545,17 +543,26 @@
             border-spacing: 0;
             margin-top: 16px;
             font-size: 0.9rem;
+            table-layout: fixed;
         }
 
         .table th, .table td {
-            padding: 12px;
+            padding: 8px 6px;
             text-align: left;
             border-bottom: 1px solid var(--bg-gray);
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .table th {
             font-weight: 600;
             color: #888;
+            font-size: 0.8rem;
+        }
+
+        .table td {
+            font-size: 0.8rem;
         }
 
         /* Settings Form - Modernized */
@@ -801,16 +808,329 @@
         }
 
         /* Page-specific styles */
-        #home-page, 
         #process-page, 
         #history-page, 
         #notification-page, 
         #settings-page, 
         #help-page, 
         #esg-page,
-        #biogas-page {
+        #biogas-page,
+        #account-page {
             padding-bottom: 70px;
             padding-top: 8px;
+        }
+
+        /* Modern Home Page Styles */
+        #home-page {
+            padding: 0;
+            background-color: var(--bg-off-white);
+            min-height: calc(100vh - 80px);
+            margin-bottom: 0;
+        }
+
+        .status-overview {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--text-light);
+            padding: 24px 20px;
+            margin-bottom: 20px;
+        }
+
+        .status-header {
+            margin-bottom: 20px;
+        }
+
+        .status-title h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .status-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .status-badge.processing {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+        }
+
+        .status-badge.biocalisator {
+            background-color: rgba(46, 125, 50, 0.3);
+            color: var(--text-light);
+        }
+
+        .progress-section {
+            text-align: left;
+        }
+
+        .progress-info {
+            margin-bottom: 12px;
+        }
+
+        .progress-percentage {
+            font-size: 2.6rem;
+            font-weight: 700;
+            line-height: 1;
+            vertical-align: bottom;
+        }
+
+        .progress-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .progress-bar-modern {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            height: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--secondary-color), #ffd54f);
+            height: 100%;
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .progress-details {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            padding: 0 20px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background-color: var(--bg-light);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            background-color: var(--primary-color);
+        }
+
+        .stat-icon.biogas {
+            background-color: var(--biogas-color);
+        }
+
+        .stat-icon.biocalisator {
+            background-color: var(--biocalisator-color);
+        }
+
+        .stat-icon.weekly {
+            background-color: var(--secondary-color);
+        }
+
+        .stat-content {
+            text-align: left;
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .chart-section {
+            background-color: var(--bg-light);
+            margin: 0 20px 24px 20px;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+        }
+
+        .chart-header {
+            margin-bottom: 16px;
+        }
+
+        .chart-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+            color: var(--text-dark);
+        }
+
+        .chart-subtitle {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .chart-container-modern {
+            height: 160px;
+            position: relative;
+        }
+
+        .notifications-section {
+            background-color: var(--bg-light);
+            margin: 0 20px 24px 20px;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+            color: var(--text-dark);
+        }
+
+        .notification-count {
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            background-color: rgba(0, 134, 110, 0.1);
+            padding: 4px 8px;
+            border-radius: 12px;
+        }
+
+        .notifications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .notification-item-modern {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 12px;
+            background-color: var(--bg-off-white);
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .notification-item-modern:hover {
+            background-color: #f0f7f5;
+        }
+
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .notification-icon.biocalisator {
+            background-color: var(--biocalisator-color);
+        }
+
+        .notification-icon.warning {
+            background-color: var(--accent-color);
+        }
+
+        .notification-icon.success {
+            background-color: var(--primary-color);
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+
+        .notification-time {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .notification-arrow {
+            color: #ccc;
+            font-size: 0.8rem;
+        }
+
+        .action-section {
+            padding: 0 20px 20px 20px;
+            margin-bottom: 40px;
+        }
+
+        .action-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--text-light);
+            border: none;
+            border-radius: 16px;
+            padding: 16px 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 134, 110, 0.2);
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 134, 110, 0.3);
         }
 
         /* Loading Animation - Modernized */
@@ -878,83 +1198,136 @@
 
         <!-- Home Page -->
         <div id="home-page">
-            <div class="card">
-                <div class="card-title">
-                    <span>ZERODISH Status</span>
-                    <div>
-                        <span class="badge badge-processing">Processing</span>
-                        <span class="biocalisator-indicator" id="home-biocalisator-indicator">
-                            <i class="fas fa-seedling"></i>
-                            Biocalisator Active
-                        </span>
+            <!-- Status Overview -->
+            <div class="status-overview">
+                <div class="status-header">
+                    <div class="status-title">
+                        <div class="status-badges">
+                            <span class="status-badge processing">Processing</span>
+                            <span class="status-badge biocalisator">
+                                <i class="fas fa-seedling"></i>
+                                Active
+                            </span>
+                        </div>
                     </div>
                 </div>
-                <div class="progress-container">
-                    <div class="progress-bar" id="home-progress"></div>
-                </div>
-                <div class="text-center" style="font-size: 0.9rem; color: #777;">
-                    <span id="home-progress-text">45% complete • Estimated completion time: 27 minutes</span>
+                <div class="progress-section">
+                    <div class="progress-info">
+                        <span class="progress-percentage">45%</span>
+                        <span class="progress-label">Complete</span>
+                    </div>
+                    <div class="progress-bar-modern">
+                        <div class="progress-fill" id="home-progress"></div>
+                    </div>
+                    <div class="progress-details">
+                        <span id="home-progress-text">Estimated completion: 27 minutes</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-title">
-                    <span>Today's Statistics</span>
-                    <span class="card-title-icon"><i class="fas fa-chart-bar"></i></span>
+            <!-- Statistics Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">1.2 kg</div>
+                        <div class="stat-label">Waste Processed</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">Waste Processed Today</span>
-                    <span class="stat-value">1.2 kg</span>
+                <div class="stat-card">
+                    <div class="stat-icon biogas">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="home-biogas-output">0.46 m³</div>
+                        <div class="stat-label">Biogas Generated</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">Biogas Generated Today</span>
-                    <span class="stat-value" id="home-biogas-output">0.46 m³</span>
+                <div class="stat-card">
+                    <div class="stat-icon biocalisator">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="home-enhancement">+28%</div>
+                        <div class="stat-label">Efficiency Boost</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">Biocalisator Enhancement</span>
-                    <span class="stat-value" id="home-enhancement">+28% efficiency</span>
+                <div class="stat-card">
+                    <div class="stat-icon weekly">
+                        <i class="fas fa-calendar-week"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">5.6 kg</div>
+                        <div class="stat-label">This Week</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">This Week</span>
-                    <span class="stat-value">5.6 kg waste • 2.15 m³ gas</span>
+            </div>
+
+            <!-- Chart Section -->
+            <div class="chart-section">
+                <div class="chart-header">
+                    <h3>Weekly Overview</h3>
+                    <span class="chart-subtitle">Biogas production trend</span>
                 </div>
-                <div class="chart-container" style="height: 120px;">
+                <div class="chart-container-modern">
                     <canvas id="home-chart"></canvas>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-title">
-                    <span>Latest Notifications</span>
-                    <span class="card-title-icon"><i class="fas fa-bell"></i></span>
+            <!-- Notifications Section -->
+            <div class="notifications-section">
+                <div class="section-header">
+                    <h3>Recent Activity</h3>
+                    <span class="notification-count">3 new</span>
                 </div>
-                <div class="notification-list">
-                    <div class="notification-item" onclick="showToast('Biocalisator running optimally!')">
-                        <div class="notification-icon-container" style="background-color: var(--biocalisator-color);"><i class="fas fa-seedling"></i></div>
+                <div class="notifications-list">
+                    <div class="notification-item-modern" onclick="showToast('Biocalisator running optimally!')">
+                        <div class="notification-icon biocalisator">
+                            <i class="fas fa-seedling"></i>
+                        </div>
                         <div class="notification-content">
                             <div class="notification-title">Biocalisator: 28% efficiency boost achieved</div>
                             <div class="notification-time">5 minutes ago</div>
                         </div>
+                        <div class="notification-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
                     </div>
-                    <div class="notification-item" onclick="showToast('Filter cleaning reminder!')">
-                        <div class="notification-icon-container"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="notification-item-modern" onclick="showToast('Filter cleaning reminder!')">
+                        <div class="notification-icon warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
                         <div class="notification-content">
                             <div class="notification-title">Biogas chamber maintenance in 2 days</div>
                             <div class="notification-time">15 minutes ago</div>
                         </div>
+                        <div class="notification-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
                     </div>
-                    <div class="notification-item" onclick="showToast('Process completed!')">
-                        <div class="notification-icon-container"><i class="fas fa-check-circle"></i></div>
+                    <div class="notification-item-modern" onclick="showToast('Process completed!')">
+                        <div class="notification-icon success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
                         <div class="notification-content">
                             <div class="notification-title">Biogas production completed</div>
                             <div class="notification-time">2 hours ago</div>
+                        </div>
+                        <div class="notification-arrow">
+                            <i class="fas fa-chevron-right"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="flex gap-16" style="padding: 0 16px;">
-                <a href="#" class="btn btn-full" onclick="showPage('process-page')">Process Details</a>
+            <!-- Action Button -->
+            <div class="action-section">
+                <button class="action-button" onclick="showPage('process-page')">
+                    <i class="fas fa-cogs"></i>
+                    <span>View Process Details</span>
+                </button>
             </div>
         </div>
 
@@ -1197,6 +1570,33 @@
 
         <!-- Settings Page -->
         <div id="settings-page" class="hidden">
+            <div class="card">
+                <div class="card-title">
+                    <span>Account Management</span>
+                    <span class="card-title-icon"><i class="fas fa-user"></i></span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">User Profile</span>
+                    <span class="stat-value" id="user-email">darrienwijaya@zerodish.com</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Connected Device</span>
+                    <span class="stat-value">ZERODISH-BG #A12345</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Account Status</span>
+                    <span class="stat-value"><span class="badge badge-completed">Active</span></span>
+                </div>
+                <div class="flex gap-8" style="margin-top: 16px;">
+                    <button class="btn btn-outline" style="flex: 1;" onclick="showPage('account-page')">
+                        <i class="fas fa-user-edit" style="margin-right: 8px;"></i>Edit Profile
+                    </button>
+                    <button class="btn btn-accent" style="flex: 1;" onclick="logout()">
+                        <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>Logout
+                    </button>
+                </div>
+            </div>
+
             <div class="card">
                 <div class="card-title">
                     <span>Biocalisator Settings</span>
@@ -1467,6 +1867,115 @@
                 <p style="color: #777; font-size: 0.9rem; margin-top: 8px;">
                     These metrics showcase the environmental benefits of biogas production from organic waste, enhanced by our biocalisator technology, supporting your sustainability reporting and carbon offset goals.
                 </p>
+            </div>
+        </div>
+
+        <!-- Account Management Page -->
+        <div id="account-page" class="hidden">
+            <div class="card">
+                <div class="card-title">
+                    <span>Profile Information</span>
+                    <span class="card-title-icon"><i class="fas fa-user-edit"></i></span>
+                </div>
+                <div class="settings-form">
+                    <div class="form-group">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-input" id="profile-firstname" value="Darrien" placeholder="First name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-input" id="profile-lastname" value="Wijaya" placeholder="Last name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" id="profile-email" value="darrienwijaya@zerodish.com" placeholder="Email address">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-input" id="profile-phone" value="+62 812-3456-7890" placeholder="Phone number">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Device ID</label>
+                        <input type="text" class="form-input" id="profile-device" value="ZERODISH-BG #A12345" placeholder="Device ID">
+                    </div>
+                    <button class="btn btn-full" onclick="updateProfile()">
+                        <i class="fas fa-save" style="margin-right: 8px;"></i>Save Changes
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span>Security Settings</span>
+                    <span class="card-title-icon"><i class="fas fa-shield-alt"></i></span>
+                </div>
+                <div class="settings-form">
+                    <div class="form-group">
+                        <label class="form-label">Current Password</label>
+                        <input type="password" class="form-input" placeholder="Enter current password">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">New Password</label>
+                        <input type="password" class="form-input" placeholder="Enter new password">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirm New Password</label>
+                        <input type="password" class="form-input" placeholder="Confirm new password">
+                    </div>
+                    <button class="btn btn-outline btn-full" onclick="showToast('Password updated successfully!')">
+                        <i class="fas fa-key" style="margin-right: 8px;"></i>Change Password
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span>Preferences</span>
+                    <span class="card-title-icon"><i class="fas fa-cog"></i></span>
+                </div>
+                <div class="toggle-container">
+                    <span class="toggle-label">Email notifications</span>
+                    <label class="toggle">
+                        <input type="checkbox" checked onchange="showToast(this.checked ? 'Email notifications enabled!' : 'Email notifications disabled!')">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-container">
+                    <span class="toggle-label">Push notifications</span>
+                    <label class="toggle">
+                        <input type="checkbox" checked onchange="showToast(this.checked ? 'Push notifications enabled!' : 'Push notifications disabled!')">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-container">
+                    <span class="toggle-label">Newsletter subscription</span>
+                    <label class="toggle">
+                        <input type="checkbox" checked onchange="showToast(this.checked ? 'Newsletter subscription enabled!' : 'Newsletter subscription disabled!')">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-container">
+                    <span class="toggle-label">Two-factor authentication</span>
+                    <label class="toggle">
+                        <input type="checkbox" onchange="showToast(this.checked ? '2FA enabled!' : '2FA disabled!')">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span>Data & Privacy</span>
+                    <span class="card-title-icon"><i class="fas fa-database"></i></span>
+                </div>
+                <div class="flex gap-8" style="margin-top: 16px;">
+                    <button class="btn btn-outline" style="flex: 1;" onclick="showToast('Data export started!')">
+                        <i class="fas fa-download" style="margin-right: 8px;"></i>Export Data
+                    </button>
+                    <button class="btn btn-outline" style="flex: 1;" onclick="showToast('Account deletion request sent!')">
+                        <i class="fas fa-trash" style="margin-right: 8px;"></i>Delete Account
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -2183,7 +2692,76 @@
             }, 3000);
         }
 
+        // Authentication functions
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (isLoggedIn !== 'true') {
+                window.location.href = 'login.html';
+                return false;
+            }
+            return true;
+        }
+
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            showToast('Logged out successfully!');
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 1500);
+        }
+
+        function updateProfile() {
+            const firstName = document.getElementById('profile-firstname').value;
+            const lastName = document.getElementById('profile-lastname').value;
+            const email = document.getElementById('profile-email').value;
+            const phone = document.getElementById('profile-phone').value;
+            const device = document.getElementById('profile-device').value;
+
+            // Update user data
+            const userData = {
+                firstName,
+                lastName,
+                email,
+                phone,
+                device
+            };
+            localStorage.setItem('userData', JSON.stringify(userData));
+            
+            // Update display
+            document.getElementById('user-email').textContent = email;
+            
+            showToast('Profile updated successfully!');
+        }
+
+        function loadUserData() {
+            const userData = localStorage.getItem('userData');
+            if (userData) {
+                const data = JSON.parse(userData);
+                document.getElementById('user-email').textContent = data.email || 'darrienwijaya@zerodish.com';
+                
+                // Update profile page if it exists
+                const profileFirstname = document.getElementById('profile-firstname');
+                const profileLastname = document.getElementById('profile-lastname');
+                const profileEmail = document.getElementById('profile-email');
+                const profilePhone = document.getElementById('profile-phone');
+                const profileDevice = document.getElementById('profile-device');
+                
+                if (profileFirstname) profileFirstname.value = data.firstName || 'Darrien';
+                if (profileLastname) profileLastname.value = data.lastName || 'Wijaya';
+                if (profileEmail) profileEmail.value = data.email || 'darrienwijaya@zerodish.com';
+                if (profilePhone) profilePhone.value = data.phone || '+62 812-3456-7890';
+                if (profileDevice) profileDevice.value = data.device || 'ZERODISH-BG #A12345';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
+            // Check authentication
+            if (!checkAuth()) return;
+            
+            // Load user data
+            loadUserData();
+            
             setTimeout(() => {
                 document.getElementById('home-progress').style.width = '45%';
                 document.getElementById('process-progress').style.width = '45%';
