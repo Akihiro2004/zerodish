@@ -61,6 +61,7 @@
             overflow: hidden;
             background-color: var(--bg-light);
             box-shadow: var(--shadow);
+            padding-top: 75px;
         }
 
         /* Header Styles - Modernized */
@@ -71,10 +72,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 414px;
             z-index: 100;
             box-shadow: 0 4px 20px rgba(0, 134, 110, 0.15);
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .header.header-hidden {
+            transform: translateX(-50%) translateY(-100%);
         }
 
         .logo {
@@ -2128,7 +2138,6 @@
             const status = document.getElementById('biocalisator-status');
             const toggle = document.getElementById('biocalisator-toggle');
             const enhancementLevel = document.getElementById('enhancement-level');
-            const homeIndicator = document.getElementById('home-biocalisator-indicator');
             const homeEnhancement = document.getElementById('home-enhancement');
             const homeProgressText = document.getElementById('home-progress-text');
             const processProgressText = document.getElementById('process-progress-text');
@@ -2139,40 +2148,78 @@
             const biogasMethaneContent = document.getElementById('biogas-methane-content');
             
             if (biocalisatorActive) {
-                status.textContent = 'Active';
-                status.className = 'badge badge-biocatalyst';
-                toggle.innerHTML = '<i class="fas fa-pause" style="margin-right: 8px;"></i>Deactivate';
-                toggle.className = 'btn btn-biocatalyst';
-                enhancementLevel.textContent = '+28% efficiency';
-                homeIndicator.innerHTML = '<i class="fas fa-seedling"></i> Biocatalyst Active';
-                homeIndicator.style.color = 'var(--biocatalyst-color)';
-                homeIndicator.style.backgroundColor = 'rgba(46, 125, 50, 0.1)';
-                homeEnhancement.textContent = '+28% efficiency';
-                homeProgressText.textContent = '45% complete • Estimated completion time: 27 minutes';
-                processProgressText.textContent = '45% complete • Estimated completion time: 27 minutes';
-                completionTime.textContent = '11:05 AM';
-                expectedOutput.textContent = '0.46 m³';
-                homeBiogasOutput.textContent = '0.46 m³';
-                methaneContent.textContent = '65%';
-                biogasMethaneContent.textContent = '65%';
+                if (status) {
+                    status.textContent = 'Active';
+                    status.className = 'badge badge-biocatalyst';
+                }
+                if (toggle) {
+                    toggle.innerHTML = '<i class="fas fa-pause" style="margin-right: 8px;"></i>Deactivate';
+                    toggle.className = 'btn btn-biocatalyst';
+                }
+                if (enhancementLevel) {
+                    enhancementLevel.textContent = '+28% efficiency';
+                }
+                if (homeEnhancement) {
+                    homeEnhancement.textContent = '+28% efficiency';
+                }
+                if (homeProgressText) {
+                    homeProgressText.textContent = '45% complete • Estimated completion time: 27 minutes';
+                }
+                if (processProgressText) {
+                    processProgressText.textContent = '45% complete • Estimated completion time: 27 minutes';
+                }
+                if (completionTime) {
+                    completionTime.textContent = '11:05 AM';
+                }
+                if (expectedOutput) {
+                    expectedOutput.textContent = '0.46 m³';
+                }
+                if (homeBiogasOutput) {
+                    homeBiogasOutput.textContent = '0.46 m³';
+                }
+                if (methaneContent) {
+                    methaneContent.textContent = '65%';
+                }
+                if (biogasMethaneContent) {
+                    biogasMethaneContent.textContent = '65%';
+                }
                 showToast('Biocatalyst activated! Enhanced production started.');
             } else {
-                status.textContent = 'Inactive';
-                status.className = 'badge badge-inactive';
-                toggle.innerHTML = '<i class="fas fa-play" style="margin-right: 8px;"></i>Activate';
-                toggle.className = 'btn btn-outline';
-                enhancementLevel.textContent = 'Standard mode';
-                homeIndicator.innerHTML = '<i class="fas fa-seedling"></i> Biocatalyst Inactive';
-                homeIndicator.style.color = '#616161';
-                homeIndicator.style.backgroundColor = '#fafafa';
-                homeEnhancement.textContent = 'Standard mode';
-                homeProgressText.textContent = '45% complete • Estimated completion time: 35 minutes';
-                processProgressText.textContent = '45% complete • Estimated completion time: 35 minutes';
-                completionTime.textContent = '11:15 AM';
-                expectedOutput.textContent = '0.36 m³';
-                homeBiogasOutput.textContent = '0.36 m³';
-                methaneContent.textContent = '62%';
-                biogasMethaneContent.textContent = '62%';
+                if (status) {
+                    status.textContent = 'Inactive';
+                    status.className = 'badge badge-inactive';
+                }
+                if (toggle) {
+                    toggle.innerHTML = '<i class="fas fa-play" style="margin-right: 8px;"></i>Activate';
+                    toggle.className = 'btn btn-outline';
+                }
+                if (enhancementLevel) {
+                    enhancementLevel.textContent = 'Standard mode';
+                }
+                if (homeEnhancement) {
+                    homeEnhancement.textContent = 'Standard mode';
+                }
+                if (homeProgressText) {
+                    homeProgressText.textContent = '45% complete • Estimated completion time: 35 minutes';
+                }
+                if (processProgressText) {
+                    processProgressText.textContent = '45% complete • Estimated completion time: 35 minutes';
+                }
+                if (completionTime) {
+                    completionTime.textContent = '11:15 AM';
+                }
+                if (expectedOutput) {
+                    expectedOutput.textContent = '0.36 m³';
+                }
+                if (homeBiogasOutput) {
+                    homeBiogasOutput.textContent = '0.36 m³';
+                }
+                if (methaneContent) {
+                    methaneContent.textContent = '62%';
+                }
+                if (biogasMethaneContent) {
+                    biogasMethaneContent.textContent = '62%';
+                }
                 showToast('Biocatalyst deactivated. Standard production mode.');
             }
         }
@@ -2755,12 +2802,55 @@
             }
         }
 
+        // Advanced scroll behavior for header
+        let lastScrollTop = 0;
+        let scrollTimeout;
+        let isHeaderVisible = true;
+
+        function handleScroll() {
+            const header = document.querySelector('.header');
+            const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Clear previous timeout
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            
+            // Determine scroll direction
+            if (currentScrollTop > lastScrollTop && currentScrollTop > 100) {
+                // Scrolling down - hide header
+                if (isHeaderVisible) {
+                    header.classList.add('header-hidden');
+                    isHeaderVisible = false;
+                }
+            } else if (currentScrollTop < lastScrollTop) {
+                // Scrolling up - show header
+                if (!isHeaderVisible) {
+                    header.classList.remove('header-hidden');
+                    isHeaderVisible = true;
+                }
+                
+                // Set timeout to hide header again after 1 second of no scrolling
+                scrollTimeout = setTimeout(() => {
+                    if (currentScrollTop > 100) {
+                        header.classList.add('header-hidden');
+                        isHeaderVisible = false;
+                    }
+                }, 1000);
+            }
+            
+            lastScrollTop = currentScrollTop;
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             // Check authentication
             if (!checkAuth()) return;
             
             // Load user data
             loadUserData();
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScroll);
             
             setTimeout(() => {
                 document.getElementById('home-progress').style.width = '45%';
